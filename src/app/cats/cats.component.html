@@ -1,0 +1,58 @@
+<mat-drawer-container class="example-container" hasBackdrop="true">
+    <mat-drawer #drawer mode="side">
+        <div class="flex" (click)="gotoDashboard()">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>home</mat-icon>
+            </button>
+            <span>Dashboard</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="flex active">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>pets</mat-icon>
+            </button>
+            <span>Cats API</span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Api de Gatos</span>
+            <span class="example-spacer"></span>
+        </mat-toolbar>
+
+        <div class="cats-container">
+            <div class="cats-content">
+                <div class="mat-grid-list-container">
+                    <mat-grid-list cols="2" rowHeight="2:1">
+                        @for (cat of cats; track cat.url) {
+                        <mat-card class="example-card" appearance="outlined">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title>{{cat.breeds[0].name}}</mat-card-title>
+                                <mat-card-subtitle>{{cat.breeds[0].temperament}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <img mat-card-image src="{{cat.url}}" 
+                                alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <p>
+                                    {{cat.breeds[0].description}}
+                                </p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>LIKE</button>
+                                <button mat-button>SHARE</button>
+                            </mat-card-actions>
+                        </mat-card>
+                        } @empty {
+                        <li>There are no cats.</li>
+                        }
+                    </mat-grid-list>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

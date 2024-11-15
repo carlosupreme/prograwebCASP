@@ -1,0 +1,22 @@
+<div class="container">
+    <form class="example-form">
+
+        <h1>Inicio de sesion</h1>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="email@example.com" type="email" [(ngModel)]="email" name="email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="*********" type="password" [(ngModel)]="password" name="password">
+        </mat-form-field>
+
+        @if (error) {
+        <h4 class="error">{{error}}</h4>
+        }
+
+        <button mat-flat-button (click)="login()">Iniciar sesion</button>
+    </form>
+</div>
